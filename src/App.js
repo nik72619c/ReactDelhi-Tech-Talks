@@ -34,9 +34,12 @@ class App extends Component {
     this.setState({isModalVisible: false});
     //event.stopPropagation();
   }
+  catchBubbled(e){
+    console.log('caught', e.target);
+}
   render() {
     return (
-      <div style={styles.container} >
+      <div style={styles.container}  onClick={this.catchBubbled}>
        {this.state.isModalVisible && <Modal closeModal={this.closeModal}>this is my modal !</Modal>}
        <button onClick={this.handleModalChange}>show modal</button>
       </div>
