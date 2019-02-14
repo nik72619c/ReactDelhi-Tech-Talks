@@ -25,12 +25,22 @@ export default class Modal extends React.Component{
 
     constructor(props){
         super(props);
+        this.closeModal=this.closeModal.bind(this);
+    }
+
+    closeModal(){
+        this.props.closeModal();
+    }
+
+    catchBubbled(e){
+        console.log('caught', e.target);
     }
     
     render(){
         return (
-            <div style={styles.container}>
+            <div style={styles.container} onClick={this.catchBubbled}>
             <div style={styles.content}>{this.props.children}</div>
+            <button onClick={this.closeModal}>close</button>
             </div>
         )
     }
