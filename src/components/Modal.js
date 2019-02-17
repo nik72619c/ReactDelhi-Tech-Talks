@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 const styles={
     container:{
         position:'absolute',
@@ -35,11 +37,11 @@ export default class Modal extends React.Component{
     
     
     render(){
-        return (
+        return ReactDOM.createPortal((
             <div style={styles.container}>
             <div style={styles.content}>{this.props.children}</div>
             <button onClick={this.closeModal}>close</button>
             </div>
-        )
+       ) , document.querySelector('#my-root'))
     }
 }
